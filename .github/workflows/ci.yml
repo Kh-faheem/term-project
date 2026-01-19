@@ -24,10 +24,10 @@ jobs:
           npm install -g htmlhint stylelint stylelint-config-standard
 
       - name: Lint HTML files
-        run: htmlhint "website/**/*.html"
+        run: htmlhint "**/*.html"
 
       - name: Lint CSS files
-        run: stylelint "website/css/**/*.css"
+        run: stylelint "**/*.css"
 
       - name: Build Docker image
         run: docker build -t term-project-web .
