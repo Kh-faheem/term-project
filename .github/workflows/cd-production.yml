@@ -1,0 +1,35 @@
+name: CD Pipeline - Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    name: Deploy to Production Environment
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://term-project-prod.onrender.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render (Production)
+        run: |
+          echo "🚀 Deploying to Production environment..."
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json"
+
+      - name: Deployment Success
+        run: |
+          echo "✅ Production deployment triggered successfully!"
+          echo "Environment: Production"
+          echo "Branch: main"
+          echo "Service URL: https://term-project-prod.onrender.com"
+          echo "⚠️  Please verify the deployment in production!"

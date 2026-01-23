@@ -1,13 +1,20 @@
-name: Term Project CI
+name: CI Pipeline - Build and Test
 
 on:
   push:
-    branches: [ "develop", "main" ]
+    branches: 
+      - develop
+      - release
+      - main
   pull_request:
-    branches: [ "develop" ]
+    branches: 
+      - develop
+      - release
+      - main
 
 jobs:
-  build-and-test:
+  lint-and-build:
+    name: Lint HTML/CSS and Build Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -17,17 +24,45 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
 
-      - name: Install linters
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Install Stylelint and Config
         run: |
-          npm install -g htmlhint stylelint stylelint-config-standard
+          npm install -g stylelint stylelint-config-standard
 
       - name: Lint HTML files
-        run: htmlhint "**/*.html"
+        run: |
+          echo "Linting HTML files in src directory..."
+          htmlhint "src/**/*.html"
 
       - name: Lint CSS files
-        run: stylelint "**/*.css"
+        run: |
+          echo "Linting CSS files in styles directory..."
+          stylelint "styles/**/*.css"
 
-      - name: Build Docker image
-        run: docker build -t term-project-web .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Image
+        run: |
+          echo "Building Docker image for CS Department website..."
+          docker build -t cs-department-website:${{ github.sha }} .
+          docker images
+
+      - name: Test Docker Container
+        run: |
+          echo "Testing Docker container..."
+          docker run -d -p 8080:80 --name test-container cs-department-website:${{ github.sha }}
+          sleep 5
+          curl -f http://localhost:8080 || exit 1
+          docker stop test-container
+          docker rm test-container
+
+      - name: CI Pipeline Success
+        run: |
+          echo "✅ CI Pipeline completed successfully!"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
