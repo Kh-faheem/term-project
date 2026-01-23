@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -32,7 +32,7 @@ body {
   font-weight: 700;
   letter-spacing: 1px;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
 }
 
 .navbar ul {
@@ -55,7 +55,7 @@ body {
 }
 
 .navbar a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(255 255 255 / 20%);
   transform: translateY(-2px);
 }
 
@@ -81,7 +81,7 @@ body {
   color: white;
   padding: 100px 40px;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
   position: relative;
   overflow: hidden;
 }
@@ -93,7 +93,7 @@ body {
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(255 255 255 / 10%) 0%, transparent 70%);
   animation: pulse 15s ease-in-out infinite;
 }
 
@@ -107,8 +107,8 @@ body {
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  animation: fadeInDown 0.8s ease;
+  text-shadow: 2px 2px 8px rgb(0 0 0 / 30%);
+  animation: fade-in-down 0.8s ease;
 }
 
 .hero p {
@@ -116,25 +116,27 @@ body {
   position: relative;
   z-index: 1;
   opacity: 0.95;
-  animation: fadeInUp 0.8s ease 0.2s both;
+  animation: fade-in-up 0.8s ease 0.2s both;
 }
 
-@keyframes fadeInDown {
+@keyframes fade-in-down {
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 0.95;
     transform: translateY(0);
@@ -148,13 +150,20 @@ body {
   padding: 40px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.8s ease;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+  animation: fade-in 0.8s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .content h1 {
@@ -208,7 +217,7 @@ form {
   padding: 30px;
   background: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
 }
 
 form label {
@@ -236,7 +245,7 @@ form input:focus,
 form textarea:focus {
   outline: none;
   border-color: #1565a5;
-  box-shadow: 0 0 0 3px rgba(21, 101, 165, 0.1);
+  box-shadow: 0 0 0 3px rgb(21 101 165 / 10%);
 }
 
 form button {
@@ -249,12 +258,12 @@ form button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(21, 101, 165, 0.3);
+  box-shadow: 0 4px 12px rgb(21 101 165 / 30%);
 }
 
 form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(21, 101, 165, 0.4);
+  box-shadow: 0 6px 16px rgb(21 101 165 / 40%);
 }
 
 form button:active {
@@ -262,7 +271,7 @@ form button:active {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .navbar {
     flex-direction: column;
     padding: 16px 20px;
