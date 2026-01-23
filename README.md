@@ -19,19 +19,19 @@ This project demonstrates a complete end-to-end DevOps workflow for developing, 
 
 | Environment | Branch | URL | Status |
 |------------|--------|-----|--------|
-| **Production** | `main` | [term-project-prod.onrender.com](https://term-project-prod.onrender.com) | ![Production](https://img.shields.io/badge/status-live-success) |
+| **Production** | `main` | [term-project-production.onrender.com](https://term-project-production.onrender.com) | ![Production](https://img.shields.io/badge/status-live-success) |
 | **Staging/QA** | `release` | [term-project-staging.onrender.com](https://term-project-staging.onrender.com) | ![Staging](https://img.shields.io/badge/status-live-success) |
-| **Development** | `develop` | [term-project-dev.onrender.com](https://term-project-dev.onrender.com) | ![Development](https://img.shields.io/badge/status-live-success) |
+| **Development** | `develop` | [term-project-devops.onrender.com](https://term-project-devops.onrender.com) | ![Development](https://img.shields.io/badge/status-live-success) |
 
 ## 👥 Team Members
 
 | Sr # | Name | Roll Number | Role | Assigned Web Page | Workflow Created |
 |------|------|-------------|------|-------------------|------------------|
-| 1 | [Team Lead Name] | [Roll #] | Team Lead | Home Page | CI Pipeline |
-| 2 | [Developer Name] | [Roll #] | Developer | Courses Page | CD Development |
-| 3 | [Developer Name] | [Roll #] | Developer | Faculty Page | CD Staging |
-| 4 | [Developer Name] | [Roll #] | Developer | Admissions Page | CD Production |
-| 5 | [Developer Name] | [Roll #] | Developer | Contact Page | HTML/CSS Linting |
+| 1 | Khawaja Faheem ud Din | L1F22BSSE0329 | Team Lead | Home Page | CI Pipeline |
+| 2 | Ali Raza | L1F22BSSE0202 | Developer | Courses Page | CD Production |
+| 3 | Musa Qureshi | L1F22BSSE0330 | Developer | Admissions Page | CD Staging |
+| 4 | Hassan Hanan Khalid | L1F22BSSE0216 | Developer | Contact Page | CD Development |
+| 5 | Musab Abdullah Shan | L1F22BSSE0324 | Developer | Faculty Page | CD Development |
 
 ## 📄 Website Pages
 
@@ -235,18 +235,7 @@ Workflows can be triggered manually:
 3. Click "Run workflow"
 4. Choose branch and run
 
-## 📊 Evaluation Criteria
-
-| Category | Marks | Status |
-|----------|-------|--------|
-| Repository setup and collaboration | 10 | ✅ |
-| HTML/CSS development and page quality | 25 | ✅ |
-| Dockerization and CI pipelines | 20 | ✅ |
-| Multi-environment CD pipelines | 25 | ✅ |
-| Git Flow, branch protection, and documentation | 20 | ✅ |
-| **Total** | **100** | |
-
-## 🛠️ Technologies Used
+## ️ Technologies Used
 
 - **Frontend:** HTML5, CSS3
 - **Containerization:** Docker, Nginx Alpine
@@ -293,45 +282,10 @@ curl http://localhost:8080
 - Docker build ensures containerization works
 - Container test verifies deployment readiness
 
-## 📚 Documentation
-
-- **Project Requirements:** See term project document
-- **Git Flow Guide:** [Atlassian Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
-- **Docker Documentation:** [Docker Docs](https://docs.docker.com/)
-- **GitHub Actions:** [GitHub Actions Docs](https://docs.github.com/en/actions)
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Issue:** Linting fails
-- **Solution:** Run linters locally and fix reported issues
-
-**Issue:** Docker build fails
-- **Solution:** Check Dockerfile syntax and file paths
-
-**Issue:** Deployment fails
-- **Solution:** Verify secrets are set correctly in GitHub Environments
-
-**Issue:** CSS not loading
-- **Solution:** Check file paths in HTML files (should be `../styles/style.css`)
-
-## 📞 Support
-
-For issues or questions:
-1. Check existing GitHub Issues
-2. Create new issue with detailed description
-3. Contact team lead
-4. Refer to project documentation
-
-## 📄 License
-
-This project is developed as part of a university term project for educational purposes.
-
 ---
 
 **Repository:** [https://github.com/Kh-faheem/term-project.git](https://github.com/Kh-faheem/term-project.git)
 
-**Developed by:** Computer Science Department DevOps Team
+**Developed by:** CS Department DevOps Team - Fast NUCES Lahore
 
 **Last Updated:** January 2026
