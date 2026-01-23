@@ -1,33 +1,34 @@
-name: Continuous Deployment to Render
+name: CD Pipeline - Deploy to Development
 
 on:
   push:
     branches:
       - develop
-      - release
-      - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-development:
+    name: Deploy to Development Environment
     runs-on: ubuntu-latest
+    environment:
+      name: development
+      url: https://term-project-dev.onrender.com
 
     steps:
-      - name: Select environment
-        run: |
-          if [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
-            echo "SERVICE_ID=srv-d5n634mr433s739i8700" >> $GITHUB_ENV
-            echo "ENV_NAME=Development" >> $GITHUB_ENV
-          elif [[ "${GITHUB_REF}" == "refs/heads/release" ]]; then
-            echo "SERVICE_ID=srv-d5n6bnq4d50c73dgjnc0" >> $GITHUB_ENV
-            echo "ENV_NAME=QA" >> $GITHUB_ENV
-          elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            echo "SERVICE_ID=srv-d5n6ffshg0os739l13l0" >> $GITHUB_ENV
-            echo "ENV_NAME=Production" >> $GITHUB_ENV
-          fi
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Trigger Render Deployment
+      - name: Deploy to Render (Development)
         run: |
-          echo "Deploying to $ENV_NAME environment..."
-          curl -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
+          echo "🚀 Deploying to Development environment..."
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
             -H "Accept: application/json" \
-            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json"
+
+      - name: Deployment Success
+        run: |
+          echo "✅ Development deployment triggered successfully!"
+          echo "Environment: Development"
+          echo "Branch: develop"
+          echo "Service URL: https://term-project-dev.onrender.com"

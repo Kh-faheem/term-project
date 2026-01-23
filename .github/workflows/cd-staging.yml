@@ -1,0 +1,34 @@
+name: CD Pipeline - Deploy to Staging/QA
+
+on:
+  push:
+    branches:
+      - release
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    name: Deploy to Staging/QA Environment
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://term-project-staging.onrender.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render (Staging/QA)
+        run: |
+          echo "🚀 Deploying to Staging/QA environment..."
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json"
+
+      - name: Deployment Success
+        run: |
+          echo "✅ Staging/QA deployment triggered successfully!"
+          echo "Environment: Staging/QA"
+          echo "Branch: release"
+          echo "Service URL: https://term-project-staging.onrender.com"
